@@ -145,7 +145,7 @@ def update_azure_user(user_data, token):
             if azure_token.status_code == 200:
                 azure_access_token = azure_token.json().get("identities")[0].get("access_token")
                 user = requests.patch(
-                    settings.AZURE_NEW_USER_URL + "/" + user_data.email,
+                    settings.AZURE_NEW_USER_URL + "/" + user_data['email'],
                     data=json.dumps({
                         "accountEnabled": True,
                         "displayName": user_data['first_name'] + " " + user_data['last_name'],
